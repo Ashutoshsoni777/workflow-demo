@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import ReactFlow, { Controls, MiniMap, Background, Handle, Position } from 'reactflow';
-import type { Node, Edge } from 'reactflow';   // ← ye line add kar dena
+import type { Node, Edge } from 'reactflow';   
 import { useStore } from './store';
 
 const initialNodes: Node<{ label: string }>[]  = [
@@ -51,7 +51,6 @@ export default function App() {
     data: { ...node.data, status: nodeStatus[node.id]?.status || 'pending' }
   })), [nodeStatus]);
 
-  // Simulate real-time WebSocket updates
   useEffect(() => {
     const nodes = ['extract', 'transform', 'validate', 'load', 'notify'];
     const statuses = ['running', 'success', 'failed'] as const;
