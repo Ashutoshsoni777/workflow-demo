@@ -59,6 +59,7 @@ function CustomNode({ data, id }: any) {
 export default function App() {
   const { nodeStatus, selectedNode, setSelectedNode, setNodeStatus } = useStore();
 
+  const [nodes, setNodes] = useNodesState(initialNodes);
   const [edges] = useEdgesState(initialEdges);
 
   const nodeTypes = useMemo(() => ({ custom: CustomNode }), []);
@@ -87,7 +88,7 @@ export default function App() {
           nodeTypes={nodeTypes}
           onNodeClick={(_, node) => setSelectedNode(node.id)}
           fitView
-          style={{ width: '100%', height: '100%', background: '#0f172a' }}
+          style={{ width: '100%', height: '100%', background: '#21335dff' }}
         >
           <Background color="#374151" gap={20} />
           <Controls className="bg-gray-800 border-gray-700 text-white" />
