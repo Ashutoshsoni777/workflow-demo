@@ -59,7 +59,6 @@ function CustomNode({ data, id }: any) {
 export default function App() {
   const { nodeStatus, selectedNode, setSelectedNode, setNodeStatus } = useStore();
 
-  const [nodes, setNodes] = useNodesState(initialNodes);
   const [edges] = useEdgesState(initialEdges);
 
   const nodeTypes = useMemo(() => ({ custom: CustomNode }), []);
