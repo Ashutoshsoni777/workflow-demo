@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../consoleNotifier/console.css';
 
-type Msg = { type: 'log' | 'info' | 'warn' | 'error'; text: string } | null;
+type MsgType = 'log' | 'info' | 'warn' | 'error';
+type Msg = { type: MsgType; text: string } | null;
 
 export function ConsoleNotifierProvider({ children }: { children: React.ReactNode }) {
   const [msg, setMsg] = useState<Msg>(null);
@@ -32,7 +33,7 @@ export function ConsoleNotifierProvider({ children }: { children: React.ReactNod
       }
     }
 
-    function show(type: Msg['type'], args: any[]) {
+    function show(type: MsgType, args: any[]) {
       const text = formatArgs(args);
       // show friendly curated message
       const friendly = type === 'error' ? 'An error occurred — check the console for details.' : type === 'warn' ? 'Warning produced — check console for details.' : 'New console output — open DevTools to review.';
